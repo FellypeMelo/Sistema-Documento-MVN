@@ -1,5 +1,10 @@
 package br.com.instituicao.sistemacomanda.controller;
 
+import br.com.instituicao.sistemacomanda.dao.ConfigPrioridadeDAO;
+import br.com.instituicao.sistemacomanda.dao.DocumentoTipoDAO;
+import br.com.instituicao.sistemacomanda.dao.SolicitacaoDAOExt;
+import br.com.instituicao.sistemacomanda.dao.StatusHistoricoDAOExt;
+import br.com.instituicao.sistemacomanda.dao.UsuarioDAO;
 import br.com.instituicao.sistemacomanda.facade.SistemaDocumentosFacade;
 import br.com.instituicao.sistemacomanda.model.Usuario;
 
@@ -18,7 +23,13 @@ public abstract class BaseController extends HttpServlet {
     protected final SistemaDocumentosFacade facade;
     
     public BaseController() {
-        this.facade = new SistemaDocumentosFacade();
+        this.facade = new SistemaDocumentosFacade(
+            new UsuarioDAO(),
+            new DocumentoTipoDAO(),
+            new SolicitacaoDAOExt(),
+            new StatusHistoricoDAOExt(),
+            new ConfigPrioridadeDAO()
+        );
     }
     
     /**
@@ -84,5 +95,14 @@ public abstract class BaseController extends HttpServlet {
     protected void forward(HttpServletRequest request, HttpServletResponse response, String view) 
             throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/views/" + view + ".jsp").forward(request, response);
+    }
+
+    protected boolean isNullOrEmpty(String... values) {
+        for (String value : values) {
+            if (value == null || value.trim().isEmpty()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

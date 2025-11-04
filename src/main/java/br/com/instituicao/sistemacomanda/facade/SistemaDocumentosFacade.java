@@ -43,12 +43,14 @@ public class SistemaDocumentosFacade {
         return configPrioridadeDAO;
     }
 
-    public SistemaDocumentosFacade() {
-        this.usuarioDAO = new UsuarioDAO();
-        this.documentoTipoDAO = new DocumentoTipoDAO();
-        this.solicitacaoDAO = new SolicitacaoDAOExt();
-        this.statusHistoricoDAO = new StatusHistoricoDAOExt();
-        this.configPrioridadeDAO = new ConfigPrioridadeDAO();
+    public SistemaDocumentosFacade(UsuarioDAO usuarioDAO, DocumentoTipoDAO documentoTipoDAO,
+            SolicitacaoDAOExt solicitacaoDAO, StatusHistoricoDAOExt statusHistoricoDAO,
+            ConfigPrioridadeDAO configPrioridadeDAO) {
+        this.usuarioDAO = usuarioDAO;
+        this.documentoTipoDAO = documentoTipoDAO;
+        this.solicitacaoDAO = solicitacaoDAO;
+        this.statusHistoricoDAO = statusHistoricoDAO;
+        this.configPrioridadeDAO = configPrioridadeDAO;
     }
 
     /**
@@ -63,7 +65,7 @@ public class SistemaDocumentosFacade {
         Optional<Usuario> usuarioOpt = usuarioDAO.findByEmail(email);
         if (usuarioOpt.isPresent()) {
             Usuario usuario = usuarioOpt.get();
-            if (usuario.isAtivo() && usuario.getSenha().equals(senha)) {
+            if (usuario.isAtivo() && org.mindrot.jbcrypt.BCrypt.checkpw(senha, usuario.getSenha())) {
                 return Optional.of(usuario);
             }
         }
@@ -188,6 +190,7 @@ public class SistemaDocumentosFacade {
     public Usuario criarUsuario(Usuario usuario) throws SQLException {
         usuario.setAtivo(true);
         usuario.setDataCadastro(LocalDateTime.now());
+        usuario.setSenha(org.mindrot.jbcrypt.BCrypt.hashpw(usuario.getSenha(), org.mindrot.jbcrypt.BCrypt.gensalt()));
         return usuarioDAO.save(usuario);
     }
 

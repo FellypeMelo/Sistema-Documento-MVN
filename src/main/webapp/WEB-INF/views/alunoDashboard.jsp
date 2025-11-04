@@ -26,15 +26,15 @@
             <tbody class="bg-white divide-y divide-gray-200">
                 <c:forEach var="solicitacao" items="${solicitacoes}">
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">#${solicitacao.id}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${solicitacao.tipoDocumento.nome}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">#<c:out value="${solicitacao.id}" /></td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><c:out value="${solicitacao.tipoDocumento.nome}" /></td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full
                                 ${solicitacao.status eq 'PENDENTE' ? 'bg-yellow-100 text-yellow-800' :
                                   solicitacao.status eq 'EM_ANDAMENTO' ? 'bg-blue-100 text-blue-800' :
                                   solicitacao.status eq 'CONCLUIDO' ? 'bg-green-100 text-green-800' :
                                   'bg-red-100 text-red-800'}">
-                                ${solicitacao.status}
+                                <c:out value="${solicitacao.status}" />
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -45,7 +45,7 @@
                                 ${solicitacao.prioridade eq 'ALTA' ? 'bg-red-100 text-red-800' :
                                   solicitacao.prioridade eq 'MEDIA' ? 'bg-yellow-100 text-yellow-800' :
                                   'bg-green-100 text-green-800'}">
-                                ${solicitacao.prioridade}
+                                <c:out value="${solicitacao.prioridade}" />
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
