@@ -1,5 +1,10 @@
 package br.com.instituicao.sistemacomanda.api;
 
+import br.com.instituicao.sistemacomanda.dao.ConfigPrioridadeDAO;
+import br.com.instituicao.sistemacomanda.dao.DocumentoTipoDAO;
+import br.com.instituicao.sistemacomanda.dao.SolicitacaoDAOExt;
+import br.com.instituicao.sistemacomanda.dao.StatusHistoricoDAOExt;
+import br.com.instituicao.sistemacomanda.dao.UsuarioDAO;
 import br.com.instituicao.sistemacomanda.facade.SistemaDocumentosFacade;
 import br.com.instituicao.sistemacomanda.model.*;
 import com.google.gson.Gson;
@@ -22,7 +27,13 @@ public class SolicitacaoAPI extends HttpServlet {
     private final Gson gson;
 
     public SolicitacaoAPI() {
-        this.facade = new SistemaDocumentosFacade();
+        this.facade = new SistemaDocumentosFacade(
+            new UsuarioDAO(),
+            new DocumentoTipoDAO(),
+            new SolicitacaoDAOExt(),
+            new StatusHistoricoDAOExt(),
+            new ConfigPrioridadeDAO()
+        );
         this.gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
                 .setPrettyPrinting()

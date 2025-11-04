@@ -17,8 +17,8 @@ public abstract class CalculadoraPrioridadeBase implements CalculadoraPrioridade
     
     protected ConfigPrioridadeDAO configPrioridadeDAO;
     
-    public CalculadoraPrioridadeBase() {
-        this.configPrioridadeDAO = new ConfigPrioridadeDAO();
+    public CalculadoraPrioridadeBase(ConfigPrioridadeDAO configPrioridadeDAO) {
+        this.configPrioridadeDAO = configPrioridadeDAO;
     }
     
     /**

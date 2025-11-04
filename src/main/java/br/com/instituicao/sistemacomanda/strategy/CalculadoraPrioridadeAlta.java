@@ -12,6 +12,10 @@ import java.sql.SQLException;
  */
 public class CalculadoraPrioridadeAlta extends CalculadoraPrioridadeBase {
     
+    public CalculadoraPrioridadeAlta(br.com.instituicao.sistemacomanda.dao.ConfigPrioridadeDAO configPrioridadeDAO) {
+        super(configPrioridadeDAO);
+    }
+
     @Override
     public int calcularPrioridade(Solicitacao solicitacao) {
         try {

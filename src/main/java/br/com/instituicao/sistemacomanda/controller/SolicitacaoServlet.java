@@ -119,13 +119,22 @@ public class SolicitacaoServlet extends BaseController {
             
             UrgenciaSolicitacao urgencia = UrgenciaSolicitacao.valueOf(request.getParameter("urgencia"));
             String observacoes = request.getParameter("observacoes");
+
+            if (isNullOrEmpty(request.getParameter("tipoDocumento"), request.getParameter("urgencia"))) {
+                setErrorMessage(request, "Tipo de documento e urgência são obrigatórios.");
+                response.sendRedirect(request.getContextPath() + "/solicitacao/nova");
+                return;
+            }
             
             facade.criarSolicitacao((Aluno) usuario, tipoDocumento, urgencia, observacoes);
             
             setSuccessMessage(request, "Solicitação criada com sucesso");
             response.sendRedirect(request.getContextPath() + "/solicitacao");
-        } catch (Exception e) {
-            setErrorMessage(request, "Erro ao criar solicitação");
+        } catch (SQLException e) {
+            setErrorMessage(request, "Erro de banco de dados ao criar solicitação.");
+            response.sendRedirect(request.getContextPath() + "/solicitacao/nova");
+        } catch (IllegalArgumentException e) {
+            setErrorMessage(request, "Dados inválidos: " + e.getMessage());
             response.sendRedirect(request.getContextPath() + "/solicitacao/nova");
         }
     }
@@ -146,13 +155,22 @@ public class SolicitacaoServlet extends BaseController {
             
             StatusSolicitacao novoStatus = StatusSolicitacao.valueOf(request.getParameter("status"));
             String observacao = request.getParameter("observacao");
+
+            if (isNullOrEmpty(request.getParameter("status"))) {
+                setErrorMessage(request, "O novo status é obrigatório.");
+                response.sendRedirect(request.getContextPath() + "/solicitacao/detalhe/" + solicitacaoId);
+                return;
+            }
             
             facade.atualizarStatusSolicitacao(solicitacao, novoStatus, observacao, (Administrador) usuario);
             
             setSuccessMessage(request, "Status atualizado com sucesso");
             response.sendRedirect(request.getContextPath() + "/solicitacao/detalhe/" + solicitacaoId);
-        } catch (Exception e) {
-            setErrorMessage(request, "Erro ao atualizar status");
+        } catch (SQLException e) {
+            setErrorMessage(request, "Erro de banco de dados ao atualizar status.");
+            response.sendRedirect(request.getContextPath() + "/solicitacao");
+        } catch (IllegalArgumentException e) {
+            setErrorMessage(request, "Dados inválidos: " + e.getMessage());
             response.sendRedirect(request.getContextPath() + "/solicitacao");
         }
     }
