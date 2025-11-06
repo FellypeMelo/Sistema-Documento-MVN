@@ -2,7 +2,6 @@ package br.com.instituicao.sistemacomanda.controller;
 
 import br.com.instituicao.sistemacomanda.model.Usuario;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -14,7 +13,6 @@ import java.util.Optional;
 /**
  * Servlet controller for handling user authentication.
  */
-@WebServlet("/login")
 public class LoginServlet extends BaseController {
     
     @Override
