@@ -31,7 +31,7 @@ mvn clean install
 - Copie o arquivo WAR gerado (`target/sistema-documento.war`) para o diretório de deploy do seu servidor
 - Ou use o plugin do Maven para deploy direto:
 ```bash
-mvn tomee:run
+mvn org.apache.tomee.maven:tomee-maven-plugin:run
 ```
 
 5. Acesse a aplicação:

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .navigation {
+            width: 200px;
+            background-color: #e9e9e9;
+            padding: 1em;
+            border-right: 1px solid #ddd;
+        }
+        .navigation ul {
+            list-style: none;
+            padding: 0;
+        }
+        .navigation ul li {
+            margin-bottom: 10px;
+        }
+        .navigation ul li a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .navigation ul li a:hover {
+            background-color: #ddd;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 2em;
+        }
+        .card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1em;
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Student Dashboard</h1>
+    </div>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li><a href="#">My Profile</a></li>
+                <li><a href="#">My Courses</a></li>
+                <li><a href="#">Grades</a></li>
+                <li><a href="#">Announcements</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h2>Welcome, Student!</h2>
+            <div class="card">
+                <h3>Recent Activity</h3>
+                <p>You have 2 new announcements.</p>
+                <p>Your grade for "Introduction to Programming" has been updated.</p>
+            </div>
+            <div class="card">
+                <h3>Upcoming Deadlines</h3>
+                <ul>
+                    <li>Assignment 3: Due November 15th</li>
+                    <li>Project Proposal: Due November 20th</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">View Course Catalog</a></li>
+                    <li><a href="#">Submit a Support Ticket</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

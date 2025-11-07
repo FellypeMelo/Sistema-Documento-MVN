@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FAETERJ-RIO - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#005aa3",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1a23",
+                        "foreground-light": "#101518",
+                        "foreground-dark": "#f5f7f8",
+                        "neutral-light": "#6C757D",
+                        "neutral-dark": "#98a1a8",
+                        "border-light": "#dae1e7",
+                        "border-dark": "#2c3e50"
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex min-h-screen items-center justify-center p-4">
+<div class="w-full max-w-md space-y-8">
+<div class="text-center">
+<img alt="FAETERJ-RIO Logo" class="mx-auto h-24 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3PiZaNE0HuZrF7vwHcrfKYX-cqtQEzumNTmoFVdxBe7J8vuTPx9W9hCjES8PYB_AFX-IcrnE3njghNXh7vX8WvGzidLuIygHlMm0FqL66DL7-kfqFmaj9-u6RWa-hEyrHQAgvgetJ8cjMzwq4fgb52cS_Qv_TBz5VGBOr5zqguFQXWYougVq0ea3BYPWkVT5_LEnbou6Za1ar5ToY6ricVTm2CQLtvit9rLNApwDN53nd_-KIKWBgAu7dA9pwKY_1wo8dsbw3gCE"/>
+<h2 class="mt-6 text-2xl font-bold tracking-tight text-foreground-light dark:text-foreground-dark">
+                Sistema de Solicitação de Documentos
+            </h2>
+</div>
+<div class="bg-white dark:bg-background-dark border border-border-light dark:border-border-dark rounded-lg p-8 shadow-sm">
+<form action="#" class="space-y-6" method="POST">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-neutral-light dark:text-neutral-dark">person</span>
+<input autocomplete="username" class="w-full rounded border-border-light dark:border-border-dark bg-transparent py-3 pl-11 pr-3 text-foreground-light dark:text-foreground-dark placeholder:text-neutral-light dark:placeholder:text-neutral-dark focus:border-primary focus:ring-primary" id="username" name="username" placeholder="Usuário" required="" type="text"/>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-neutral-light dark:text-neutral-dark">lock</span>
+<input autocomplete="current-password" class="w-full rounded border-border-light dark:border-border-dark bg-transparent py-3 pl-11 pr-3 text-foreground-light dark:text-foreground-dark placeholder:text-neutral-light dark:placeholder:text-neutral-dark focus:border-primary focus:ring-primary" id="password" name="password" placeholder="Senha" required="" type="password"/>
+</div>
+<div>
+<button class="w-full rounded bg-primary px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors" type="submit">
+                        ENTRAR
+                    </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+</body></html>
